@@ -1,0 +1,50 @@
+body {
+  background-color: #c1d3ff;
+  font-family: "Poppins" !important;
+}
+
+.container-register {
+  background-color: #00000020;
+  border-radius: 30px !important;
+  width: 45vw !important;
+  box-shadow: 3px 3px 10px #00000080 !important;
+  margin-top: 80px !important;
+}
+
+.container-register h1 {
+  color: black !important;
+  margin-bottom: 20px;
+}
+
+.container-register label {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.container-register input {
+  font-size: 1.2rem;
+  padding: 3px 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #00000080;
+}
+
+.container-register button {
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 15px;
+  padding: 5px 15px;
+  text-align: center;
+  margin: auto;
+  box-shadow: 1px 1px 5px #00000080;
+}
+
+.container-register .btn-container {
+  margin-top: 30px;
+  display: flex;
+}
+a#signup-link {
+  margin-top: -10px;
+  display: block;
+  text-align: right;
+  font-weight: 600;
+}
