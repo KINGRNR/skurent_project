@@ -71,8 +71,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <p style="color: red;"><?= $alert; ?></p>
                     <div class="btn-container">
-                        <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
-                    </div>
+                        <button type="submit" name="submit" class="btn btn-primary">Sign Up</button> 
                 </form>
             </div>
         </div>

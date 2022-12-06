@@ -3,6 +3,14 @@
     session_start();
     // error_reporting(0);
     $userName = $_SESSION['name'];
+    if (isset($_SESSION['login'])) {
+        if ($_SESSION['level'] == 'user') {
+            header('Location: http://localhost/skurent_project/index.php');
+        } else {
+            $userLevel = $_SESSION['level'];
+            $userName = $_SESSION['name'];
+        }
+    }
     include "../koneksi.php"; //panggil file koneksi
     $query = "SELECT * FROM tb_user"; //buat query sql
     $hasil = mysqli_query($koneksi_db, $query); //jalankan query sql
@@ -33,42 +41,41 @@
                 <div class="left">
                     <img src="../img/joni.jpg" alt="">
                     <p><?= $userName ?></p>
-                    <a href="index.php">Manage User</a>
+                    <a href="index.php" class="active">Manage User</a>
                     <a href="crud_transaksi.php">Manage Transaction</a>
                     <a href="crud_kategori.php">Manage Categories</a>
-                    <a href="crud_barang">Manage Items</a>
+                    <a href="crud_barang.php">Manage Items</a>
+                    <!-- <a href="">image</a>  -->
                     <a href="../logout.php">Log Out</a>
                 </div>
                 <div class="right">
-                    <h1>Manage User</h1>
-                    <br>
-                    <p>Banyak Data : <?= $jum?></p>
-                    <br>
-                    <br>
-                    <form action="">
-                        <!-- isi halaman kelola -->
-                        <table>
+                    <div class="table-title">
+                        <h1>Manage User</h1>
+                        <p>All Data : <?= $jum ?></p>
+                    </div>
+
+                    <!-- isi halaman kelola -->
+                    <table>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Phone Number</th>
+                            <th>Action</th>
+                        </tr>
+                        <?php
+                        //perulangan untuk nampilkan data dari database
+                        while ($data = mysqli_fetch_array($hasil)) {
+                        ?>
                             <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Nomor telp</th>
-                                <th></th>
+                                <td><?php echo $no++; ?></td>
+                                <td><?= $data['username']; ?></td>
+                                <td><?= $data['alamat']; ?></td>
+                                <td><?= $data['telpon']; ?></td>
+                                <td><a href="delete.php?id=<?php echo $data['id']; ?>" onclick="return confirm('apakah anda yakin?')">Delete</a></td>
                             </tr>
-                            <?php
-                            //perulangan untuk nampilkan data dari database
-                            while ($data = mysqli_fetch_array($hasil)) {
-                            ?>
-                                <tr>
-                                    <td><?php echo $no++; ?></td>
-                                    <td><?= $data['username']; ?></td>
-                                    <td><?= $data['alamat']; ?></td>
-                                    <td><?= $data['telpon']; ?></td>
-                                    <td><a href="delete.php?id=<?php echo $data['id']; ?>" onclick="return confirm('apakah anda yakin?')">Delete</a></td>
-                                </tr>
-                            <?php } ?>
-                        </table>
-                    </form>
+                        <?php } ?>
+                    </table>
                 </div>
             </div>
 

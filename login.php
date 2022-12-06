@@ -62,7 +62,6 @@ if (isset($_POST['submit'])) {
                         <input type="checkbox" onclick="myFunction()">Show Password
                     </div>
                     <a href="register.php" id="signup-link" class="text-decoration-none">Sign Up</a>
-                    <a href="index.php" id="signup-link" class="text-decoration-none">back</a>
                     <!-- <p style="color: red;"><?= $alert; ?></p> -->
                     <div class="btn-container">
                         <button type="submit" name="submit" class="btn btn-primary">Sign In</button>

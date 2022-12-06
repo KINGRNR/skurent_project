@@ -1,5 +1,4 @@
 <?php
-// require_once '../functions.php';
 session_start();
 // error_reporting(0);
 $userName = $_SESSION['name'];
@@ -31,33 +30,60 @@ $userName = $_SESSION['name'];
                 <a href="index.php">Manage User</a>
                 <a href="crud_transaksi.php">Manage Transaction</a>
                 <a href="crud_kategori.php">Manage Categories</a>
-                <a href="crud_barang.php">Manage Items</a>
+                <a href="crud_barang.php" class="active">Manage Items</a>
                 <a href="../logout.php">Log Out</a>
             </div>
             <div class="right">
-                <h1>Manage Barang</h1>
-                <form action="" method="post">
+                <h1>Manage Items</h1>
+                <form action="upload_barang.php" method="post" enctype="multipart/form-data">
                     <!-- <input type="hidden" name="id" value="<?php echo $data['id']; ?>"> -->
                     <div class="label-input">
-                        <label for="fullname">Full Name:</label>
-                        <input type="text" id="fullname" name="fullname" autocomplete="off" autofocus required value="<?= $data['username'] ?>">
+                        <label for="fullname">Name</label>
+                        <input type="text" id="fullname" name="fullname" autocomplete="off" autofocus required value="">
                     </div>
 
                     <hr>
 
                     <div class="label-input">
-                        <label for="phones">Phones:</label>
-                        <input type="number" id="phones" name="phones" autocomplete="off" value="<?= $data['telpon']; ?>" required>
+                        <label for="desc">Desc</label>
+                        <input type="textarea" id="phones" name="desc" autocomplete="off" value="" required>
+                    </div>
+                    <hr>
+                    <div class="label-input">
+                        <label for="loc">Location</label>
+                        <input type="textarea" id="loc" name="loc" autocomplete="off" value="" required>
+                    </div>
+                    <hr>
+                    <div class="label-input">
+                        <label for="stock">Stock</label>
+                        <input type="number" id="stock" name="stock" autocomplete="off" value="" required>
+                    </div>
+                    <hr>
+                    <div class="label-input">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" name="price" autocomplete="off" value="" required>
                     </div>
 
                     <hr>
 
                     <div class="label-input">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" autocomplete="off" value="<?= $data['alamat']; ?>" required>
+                        <label for="kategori">Categories</label>
+                        <select name="kategori" id="kategori">
+                            <option value="camera">Camera</option>
+                            <option value="sound">Sound System</option>
+                            <option value="tent">Tent</option>
+                            <option value="chair">Chair & Table</option>
+                        </select>
                     </div>
 
-                    <button type="submit" name="submit" id="btn-submit">Edit</button>
+                    <hr>
+
+                    <div class="label-input">
+                        <label for="foto">Image</label>
+                        <input type="file" id="foto" name="foto" autocomplete="off" value="" required>
+                    </div>
+
+                    <button type="submit" name="submit" id="btn-submit">Create</button>
                 </form>
             </div>
         </div>

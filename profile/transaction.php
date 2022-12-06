@@ -1,3 +1,12 @@
+<?php
+session_start();
+require_once '../functions.php';
+$data = getUserData(null, $_SESSION['id']);
+if (isset($_POST['submit'])) {
+    $result = updateUser($_SESSION['id'], $_POST['fullname'], $_POST['phones'], $_POST['address']);
+    header("Refresh:0");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +29,7 @@
         <div class="content">
             <div class="left">
                 <img src="../img/joni.jpg" alt="">
-                <p>Username</p>
+                <p><?= $data['username']; ?> </p>
                 <a href="edit.php">Edit Profile</a>
                 <a href="transaction.php">Transaction Info</a>
                 <!-- <a href="">Settings</a> -->
@@ -28,27 +37,27 @@
             </div>
             <div class="right">
                 <form action="">
-                    <table>
+                    <table style="text-align: center;">
                         <tr>
                             <th>No</th>
-                            <th>Nama Barang</th>
-                            <th>Jaminan Sewa</th>
-                            <th>Lama Sewa</th>
+                            <th>Items</th>
+                            <th>Guarantee</th>
+                            <th>Rental length</th>
                             <th>Status</th>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>Camera EOS 80D</td>
                             <td>KTP</td>
-                            <td>1 Hari</td>
-                            <td>Sedang Dikirim</td>
+                            <td>1 Day</td>
+                            <td>On Process</td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>Camera EOS 80D</td>
                             <td>KTP</td>
                             <td>1 Hari</td>
-                            <td>Sedang Dikirim</td>
+                            <td>Sent</td>
                         </tr>
                     </table>
                 </form>

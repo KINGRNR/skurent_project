@@ -53,7 +53,7 @@ if (isset($_SESSION['login'])) {
                             </li>
                         <?php else : ?>
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?= $userName; ?>
                                 </a>
 
@@ -72,9 +72,19 @@ if (isset($_SESSION['login'])) {
         </div>
     </nav>
     <!-- End Navbar -->
-    <div class="section-kategori">
-        <h1 class="fw-bold">Browse by Categories</h1>
-        <div class="section-kategori-card">
+    <div class="fluid-container" style="padding: 10px 30px;">
+        <div class="p-5 mb-4 bg-light bg-gradient rounded-5 mx-auto shadow">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">Sku-Rent</h1>
+                <p class="col-md-8 fs-4">Sku-Rent is a website that provides rental services for event items which of course makes it easier for users to rent equipment.<br><br><strong>
+                Need to rent equipment for events? click button below </strong></p>
+                <a href="#title-index" class="btn btn-primary btn-lg" type="button">Let's Rent!</a>
+            </div>
+        </div>
+        <div class="title-index" id="title-index">
+            <h1>Choose Category:</h1>
+        </div>
+        <div class="section-kategori">
             <a href="halamanbarang.php" class="href_link text-decoration-none">
                 <div class="kategori-card">
                     <img src="img/Canon.png" alt="">
@@ -96,30 +106,26 @@ if (isset($_SESSION['login'])) {
                     <p class="fw-lighter fs-5">100+ product</p>
                 </div>
             </a>
-        </div>
-        <div class="antara-kategori">
-            <div class="section-kategori-card">
-                <a href="inde.html" class="href_link text-decoration-none">
-                    <div class="kategori-card">
-                        <img src="img/Decor.png" alt="">
-                        <p>Decoration Set</p>
-                        <p class="fw-lighter fs-5">100+ product</p>
-                    </div>
-                </a>
-                <a href="" class="href_link text-decoration-none">
-                    <div class="kategori-card">
-                        <img src="img/Chair.png" alt="">
-                        <p>Chair & Table</p>
-                        <p class="fw-lighter fs-5">100+ product</p>
-                    </div>
-                </a>
-                <a href="" class="href_link text-decoration-none">
-                    <div class="kategori-card">
-                        <img src="img/Profile.png" alt="">
-                        <p>Other</p>
-                    </div>
-                </a>
-            </div>
+            <a href="inde.html" class="href_link text-decoration-none">
+                <div class="kategori-card">
+                    <img src="img/Decor.png" alt="">
+                    <p>Decoration Set</p>
+                    <p class="fw-lighter fs-5">100+ product</p>
+                </div>
+            </a>
+            <a href="" class="href_link text-decoration-none">
+                <div class="kategori-card">
+                    <img src="img/Chair.png" alt="">
+                    <p>Chair & Table</p>
+                    <p class="fw-lighter fs-5">100+ product</p>
+                </div>
+            </a>
+            <a href="" class="href_link text-decoration-none">
+                <div class="kategori-card">
+                    <img src="" alt="">
+                    <p>Other</p>
+                </div>
+            </a>
         </div>
     </div>
     <!-- footer -->
@@ -128,13 +134,6 @@ if (isset($_SESSION['login'])) {
         <div class="footer-left">
             <h3>Sku <span>Rent</span></h3>
 
-            <p class="footer-links">
-                <a href="#">Home</a>
-                |
-                <a href="#">Checkout</a>
-                |
-                <a href="#">Riwayat</a>
-            </p>
         </div>
 
         <div class="footer-center">

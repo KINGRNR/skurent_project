@@ -30,7 +30,7 @@ $userName = $_SESSION['name'];
                 <p><?= $userName ?></p>
                 <a href="index.php">Manage User</a>
                 <a href="crud_transaksi.php">Manage Transaction</a>
-                <a href="crud_kategori.php">Manage Categories</a>
+                <a href="crud_kategori.php" class="active">Manage Categories</a>
                 <a href="crud_barang.php">Manage Items</a>
                 <a href="../logout.php">Log Out</a>
             </div>
@@ -39,18 +39,18 @@ $userName = $_SESSION['name'];
                 <form action="" method="post">
                     <!-- <input type="hidden" name="id" value="<?php echo $data['id']; ?>"> -->
                     <div class="label-input">
-                        <label for="fullname">Name :</label>
-                        <input type="text" id="fullname" name="fullname" autocomplete="off" autofocus required value="<?= $data['username'] ?>">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" autocomplete="off" autofocus required value="">
                     </div>
 
                     <hr>
 
                     <div class="label-input">
-                        <label for="address">Image :</label>
+                        <label for="image">Image</label>
                         <input type="file" id="" name="" autocomplete="off" value="<?= $data['alamat']; ?>" required>
                     </div>
 
-                    <button type="submit" name="submit" id="btn-submit">Edit</button>
+                    <button type="submit" name="submit" id="btn-submit">Create</button>
                 </form>
             </div>
         </div>

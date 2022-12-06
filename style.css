@@ -2,6 +2,9 @@ body {
   background-color: #c1d3ff;
   font-family: "Poppins" !important;
 }
+.nav {
+  background-color: #3C9BDD;
+}
 .href_link {
   border-radius: 32px;
   display: flex;
@@ -10,25 +13,26 @@ body {
   background-color: #c1d3ff;
 }
 .section-kategori {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 90vw; */
+  margin: auto;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
+  /* background-color: red; */
 }
 
-.section-kategori h1 {
-  font-size: 2em;
-  margin-left: 50px;
-  margin-top: 25px;
-  /* text-shadow: 1px 1px 5px #000000; */
+.title-index {
+  margin: 50px 0 20px;
 }
-.section-kategori-card {
-  padding: 20px;
-  margin: 100px;
-  margin-top: 25px;
-  display: flex;
-  justify-content: space-evenly;
+
+.title-index h1 {
+  font-size: 2em;
 }
 
 .kategori-card {
-  /* background-color: rgba(255, 255, 255, 0.3); */
   background-color: white;
   width: fit-content;
   padding: 30px;
@@ -54,7 +58,6 @@ body {
   color: black;
   margin-bottom: 5px;
   font-weight: 600;
-  /* text-shadow: 1px 1px 5px #000000; */
 }
 
 @media (max-width: 1500px) {
@@ -68,9 +71,6 @@ body {
   .kategori-card {
     margin-bottom: 20px;
   }
-}
-.antara-kategori {
-  margin-top: -50px;
 }
 /* Footer */
 footer {
@@ -123,23 +123,6 @@ footer {
 }
 
 .footer-distributed h3 span {
-  color: #20c997;
-}
-
-/* Footer links */
-
-.footer-distributed .footer-links {
-  color: #000;
-  margin: 20px 0 12px;
-}
-
-.footer-distributed .footer-links a {
-  display: inline-block;
-  line-height: 1.8;
-  text-decoration: none;
-  color: inherit;
-}
-.footer-distributed .footer-links a:hover {
   color: #20c997;
 }
 

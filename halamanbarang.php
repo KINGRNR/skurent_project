@@ -12,8 +12,10 @@ if (isset($_SESSION['login'])) {
         $userName = $_SESSION['name'];
     }
 }
-
+$data = mysqli_query($koneksi_db, "SELECT * FROM tb_barang order by id_barang DESC");
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,8 +54,8 @@ if (isset($_SESSION['login'])) {
                             </li>
                             <?php else : ?>'
                             <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= $userName; ?>
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?= $userName; ?>
                                 </a>
 
                                 <ul class="dropdown-menu nav-item">
@@ -70,92 +72,33 @@ if (isset($_SESSION['login'])) {
     <div class="search-bar">
         <input type="text" placeholder="Search..">
     </div>
+
+
     <?php if ($userLevel != 'user') : ?>
-    <div class="section-kategori">
-        <!-- cart -->
-        <div class="section-kategori-card">
-            <div class="kategori-card">
-                <img src="img/barang/Canon.png" alt="">
-                <p>Canon EOS 80D</p>
-                <!-- <a href="">see more</a> -->
-                <button class="GFG" onclick="window.location.href = 'login.php';">See More</button>
-            </div>
-
-            <div class="kategori-card">
-                <img src="img/barang/Nikon.png" alt="">
-                <p>Nikon D3500</p>
-                <button class="GFG" onclick="window.location.href = 'login.php';">See More</button>
-            </div>
-            <div class="kategori-card">
-                <img src="img/barang/Fujifilm.png" alt="">
-                <p>Fujifilm X-T200</p>
-                <button class="GFG" onclick="window.location.href = 'login.php';">See More</button>
-            </div>
+        <div class="section-kategori">
+            <?php while ($row = mysqli_fetch_array($data)) : ?>
+                <!-- cart -->
+                <div class="kategori-card">
+                    <img src="image_file/<?= $row['gambar_barang']; ?>" alt="">
+                    <p><?= $row['nama_barang']; ?></p>
+                    <!-- <a href="">see more</a> -->
+                    <a href="login.php" class="CFG" onclick="window.location.href = 'login.php';">See More</a>
+                </div>
+            <?php endwhile; ?>
         </div>
-        <div class="antara-kategori">
-            <div class="section-kategori-card">
-                <div class="kategori-card">
-                    <img src="img/barang/Nikon.png" alt="">
-                    <p>Nikon D3500</p>
-                    <button class="GFG" onclick="window.location.href = 'login.php';">See More</button>
-                </div>
-
-                <div class="kategori-card">
-                    <img src="img/barang/Fujifilm.png" alt="">
-                    <p>Fujifilm X-T200</p>
-                    <button class="GFG" onclick="window.location.href = 'login.php';">See More</button>
-                </div>
-                <div class="kategori-card">
-                    <img src="img/barang/Canon.png" alt="">
-                    <p>Canon EOS 80D</p>
-                    <button class="GFG" onclick="window.location.href = 'login.php';">See More</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php else : ?>
         <div class="section-kategori">
-        <!-- cart -->
-        <div class="section-kategori-card">
-            <div class="kategori-card">
-                <img src="img/barang/Canon.png" alt="">
-                <p>Canon EOS 80D</p>
-                <!-- <a href="">see more</a> -->
-                <button class="GFG" onclick="window.location.href = 'details.php';">See More</button>
-            </div>
-
-            <div class="kategori-card">
-                <img src="img/barang/Nikon.png" alt="">
-                <p>Nikon D3500</p>
-                <button class="GFG" onclick="window.location.href = 'details.php';">See More</button>
-            </div>
-            <div class="kategori-card">
-                <img src="img/barang/Fujifilm.png" alt="">
-                <p>Fujifilm X-T200</p>
-                <button class="GFG" onclick="window.location.href = 'details.php';">See More</button>
-            </div>
+            <?php while ($row = mysqli_fetch_assoc($data)) : ?>
+                <!-- cart -->
+                <div class="kategori-card">
+                    <img class="img-fluid" src="image_file/<?= $row['gambar_barang']; ?>" alt="">
+                    <p><?= $row['nama_barang']; ?></p>
+                    <!-- <a href="">see more</a> -->
+                    <!-- <button class="GFG" onclick="window.location.href = 'details.php?id='<?= $row['id_barang'] ?>'';">See More</button> -->
+                    <a class="CFG" href="details.php?id=<?= $row['id_barang'] ?>">See More</a>
+                </div>
+            <?php endwhile; ?>
         </div>
-        <div class="antara-kategori">
-            <div class="section-kategori-card">
-                <div class="kategori-card">
-                    <img src="img/barang/Nikon.png" alt="">
-                    <p>Nikon D3500</p>
-                    <button class="GFG" onclick="window.location.href = 'details.php';">See More</button>
-                </div>
-
-                <div class="kategori-card">
-                    <img src="img/barang/Fujifilm.png" alt="">
-                    <p>Fujifilm X-T200</p>
-                    <button class="GFG" onclick="window.location.href = 'details.php';">See More</button>
-                </div>
-                <div class="kategori-card">
-                    <img src="img/barang/Canon.png" alt="">
-                    <p>Canon EOS 80D</p>
-                    <button class="GFG" onclick="window.location.href = 'details.php';">See More</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <?php endif; ?>
     <!-- footer -->
     <footer class="footer-distributed">
@@ -163,13 +106,6 @@ if (isset($_SESSION['login'])) {
         <div class="footer-left">
             <h3>Sku <span>Rent</span></h3>
 
-            <p class="footer-links">
-                <a href="#">Home</a>
-                |
-                <a href="#">Checkout</a>
-                |
-                <a href="#">Riwayat</a>
-            </p>
         </div>
 
         <div class="footer-center">
@@ -202,11 +138,16 @@ if (isset($_SESSION['login'])) {
     <section class="footer-section-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 footer-bottom-left">
+                <div class="col-md-15 footer-bottom-left">
                     <p>Copyright © 2022 Rafif Nur R. All Rights Reserved</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 
 </html>
+<?php
+?>
